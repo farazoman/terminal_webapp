@@ -3,11 +3,14 @@ var cmds = {};
 cmds["help"] = function(){help()};
 cmds["whoami"] = function(){info()};
 cmds["myprojs"] = function(){projects()};
+cmds["enter"] = function(){enter()};
+cmds["version"] = function(){version()};
 cmds[""] = function(){nada()};
+var version_ = "webterminal v0.2.0";
 var welcomemsg = "Welcome to my website, you may enter the graphical user interface by typing the command 'enter' and if you wish to use the terminal type 'help' for more commands."
 var info_v = "</br></br>My name is Faraz Oman, and I am a student at McGill University, Majoring in Software Engineering and Minoring in Mathematics. I am currently entering my second year and I am a part of a veritiy of extracurriculars. I am the editor-in-cheif of the <a target='_blank' href='http://www.plumbersfaucet.ca'>Plumber's Faucet</a> and I am regularly involved in McGill Engineering Undergraduate Society events.</br></br>I enjoy to spend my time listening to music, learning spanish and biking.</br></br>I can be reached at farazoman@gmail.com if you wish to get in contact with me. Enjoy the rest of the site.</br>";
 var errmsg = "</br></br><span id='err'>Sorry</span> that is not valid command, refer to the valid commads below.";
-var proj_info = "</br>Hi there, thanks for the interest, my projects can be found at my <a target='_blank' href='http://www.github.com/farazoman'>github</a> also visit <a target='_blank' href='http://finance.mcgilleus.ca'>here</a> to get a glimpse of the project headed by me. The mcgilleus project is made to digitize the submission and authentication of cheque requisions for the Engineering Undergraduate Society of McGill university. On github you can view projects that I have worked on from highschool including a few things I have worked on including this terminal style interface."
+var proj_info = "</br></br>Hi there, thanks for the interest, my projects can be found at my <a target='_blank' href='http://www.github.com/farazoman'>github</a> also visit <a target='_blank' href='http://finance.mcgilleus.ca'>here</a> to get a glimpse of the project headed by me. The mcgilleus project is made to digitize the submission and authentication of cheque requisions for the Engineering Undergraduate Society of McGill university. On github you can view projects that I have worked on from highschool including a few things I have worked on including this terminal style interface.</br>"
 var bk_colour;
 var txt_colour;
 var cmd = "";
@@ -48,8 +51,14 @@ function projects(){
 	add_to_div(proj_info)
 }
 
+function version(){
+    var version_info = "</br></br>" + version_ + "</br>This version is still in beta with many features still to be implemented. Source code can be viewed <a target='_blank' href='http://www.github.com/farazoman/terminal_webapp'>here</a></br>";
+
+    add_to_div(version_info);
+}
+
 function help(){
-	var ayudar = "</br></br><u>The available commands are:</u>"
+	var ayudar = "</br></br><u>The available commands are:</u>";
 
 	for(i in cmds){
 		ayudar += "</br>";
@@ -58,6 +67,10 @@ function help(){
 
 	add_to_div(ayudar);
 
+}
+
+function enter(){
+    add_to_div("</br>The graphical user interface has not yet been completed, sorry for the dissapointment but view this cute gif of <a target='_blank' href='../res/mudkip.gif'>mudkip</a> instead");
 }
 
 function error(){
@@ -106,6 +119,28 @@ document.addEventListener('keypress', function(event) {
     	
     }
 });
+
+window.addEventListener('keydown', function(event) {
+  switch (event.keyCode) {
+    case 37: // Left
+            
+        break;
+
+    case 38: // Up
+        break;
+
+    case 39: // Right
+        break;
+
+    case 40: // Down
+        break;
+  }
+}, false);
+
+function left_cursor(){
+    var str = document.getElementById("term_area").innerHTML;
+
+}
 
 function backspace(blinkerOnly){
     var str = document.getElementById("term_area").innerHTML;
