@@ -70,7 +70,7 @@ function help(){
 }
 
 function enter(){
-    add_to_div("</br>The graphical user interface has not yet been completed, sorry for the dissapointment but view this cute gif of <a target='_blank' href='../res/mudkip.gif'>mudkip</a> instead");
+    add_to_div("</br>The graphical user interface has not yet been completed, sorry for the dissapointment, but you can view this cute gif of <a target='_blank' href='../res/mudkip.gif'>mudkip</a> instead");
 }
 
 function error(){
