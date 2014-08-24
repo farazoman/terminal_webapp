@@ -1,0 +1,26 @@
+.terminal{
+	color:#58b04c;
+	background-color: #272822;
+	font-size: 1em;
+	font-family: 'droid_sans_monoregular', "consolas";
+}
+
+#err{
+	color:#d53838;
+}
+
+a{
+	color:#f2f45a;
+	text-decoration: none;
+}
+
+@font-face {
+    font-family: 'droid_sans_monoregular';
+    src: url('../fonts/DroidFonts/droidsansmono.eot');
+    src: url('../fonts/DroidFonts/droidsansmono.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/DroidFonts/droidsansmono.woff') format('woff'),
+         url('../fonts/DroidFonts/droidsansmono.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
