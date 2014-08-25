@@ -93,7 +93,7 @@ function blinker(){
 
 //Event listener for keypressed
 document.addEventListener('keypress', function(event) {
-
+    window.scrollTo(0,document.body.scrollHeight);
 	//When enter is pressed, process input
     if(event.keyCode == 13) {
     	//process cmd here!!!
@@ -118,6 +118,7 @@ document.addEventListener('keypress', function(event) {
     	cmd += ltr;
     	
     }
+    window.scrollTo(0,document.body.scrollHeight);
 });
 
 window.addEventListener('keydown', function(event) {
