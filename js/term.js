@@ -5,13 +5,15 @@ cmds["whoami"] = function(){info()};
 cmds["myprojs"] = function(){projects()};
 cmds["enter"] = function(){enter()};
 cmds["version"] = function(){version()};
+cmds["resumeplz"] = function(){resume()};
 cmds["clear"] = function(){clear()};
 cmds[""] = function(){nada()};
+
 var version_ = "webterminal v0.2.0";
 var welcomemsg = "Welcome to my website, you may enter the graphical user interface by typing the command 'enter' and if you wish to use the terminal type 'help' for more commands."
-var info_v = "</br></br>My name is Faraz Oman, and I am a student at McGill University, Majoring in Software Engineering and Minoring in Mathematics. I am currently entering my second year and I am a part of a variety of extracurriculars. I am the editor-in-cheif of the <a target='_blank' href='http://www.plumbersfaucet.ca'>Plumber's Faucet</a>, the Co-Editor of the Academic Journal <a target='_blank' href='http://issuu.com/clashsamcgill'>'Voces'</a> and Vice President of Information Technology of <a target='_blank' href='http://www.actuarialmcgill.ca'>McGill Students' Actuarial Association</a>.</br></br>I enjoy to spend my time listening to music, learning spanish and biking.</br></br>I can be reached at <a target='_blank' href='mailto:faraz@farazoman.me'>faraz@farazoman.me</a> if you wish to get in contact with me. Enjoy the rest of the site.</br>";
+var info_v = "</br></br>My name is Faraz Oman, and I am a student at McGill University, Majoring in Software Engineering and Minoring in Mathematics. I am currently entering my second year and I am a part of a variety of extracurriculars. I was the editor-in-cheif of the <a target='_blank' href='http://www.plumbersfaucet.ca'>Plumber's Faucet</a>, and I am currently the Co-Editor of the Academic Journal <a target='_blank' href='http://issuu.com/clashsamcgill'>'Voces'</a> and Vice President of Information Technology of <a target='_blank' href='http://www.actuarialmcgill.ca'>McGill Students' Actuarial Association</a>.</br></br>I enjoy to spend my time listening to music, learning spanish and biking.</br></br>I can be reached at <a target='_blank' href='mailto:faraz@farazoman.me'>faraz@farazoman.me</a>. Enjoy the rest of the site.</br>";
 var errmsg = "</br></br><span id='err'>Sorry</span> that is not valid command, refer to the valid commads below.";
-var proj_info = "</br></br>Hi there, thanks for the interest, my projects can be found at my <a target='_blank' href='http://www.github.com/farazoman'>github</a> On github you can view projects that I have worked on from highschool including a few things I have worked on including this terminal style interface.</br>"
+var proj_info = "</br></br>Hi there, thanks for the interest, my projects can be found at my <a target='_blank' href='http://www.github.com/farazoman'>github</a>. You will see the code for projects such as this terminal interface and others such as a video game in java and various hackathon mini projects.</br>"
 var bk_colour;
 var txt_colour;
 var cmd = "";
@@ -32,31 +34,37 @@ function load(prompt_){
     setInterval(function(){blinker()}, 500);
 }
 
+
 function nada(){}
 
 function add_to_div(text){
-	var termdiv = document.getElementById("term_area");
-	var str = termdiv.innerHTML;
-	str += text;
-	termdiv.innerHTML = str;
+    var termdiv = document.getElementById("term_area");
+    var str = termdiv.innerHTML;
+    str += text;
+    termdiv.innerHTML = str;
 }
 
 function welcome(){
-	add_to_div(welcomemsg);
+    add_to_div(welcomemsg);
 }
 
 function info(){
-	add_to_div(info_v);
+    add_to_div(info_v);
 }
 
 function projects(){
-	add_to_div(proj_info)
+    add_to_div(proj_info)
 }
 
 function version(){
     var version_info = "</br></br>" + version_ + "</br>This version is still in beta with many features still to be implemented. Source code can be viewed <a target='_blank' href='http://www.github.com/farazoman/terminal_webapp'>here</a></br>";
 
     add_to_div(version_info);
+}
+
+function resume(){
+    //window.location.href = 'http://www.farazoman.com/files/cur_resume.pdf';
+    window.open("http://www.farazoman.com/files/cur_resume.pdf", "_blank");
 }
 
 function clear(){
