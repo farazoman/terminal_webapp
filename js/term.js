@@ -3,12 +3,12 @@ var cmds = {};
 cmds["help"] = function(){help()};
 cmds["whoami"] = function(){info()};
 cmds["myprojs"] = function(){projects()};
-cmds["enter"] = function(){enter()};
+//cmds["enter"] = function(){enter()};
 cmds["version"] = function(){version()};
 cmds["clear"] = function(){clear()};
 cmds[""] = function(){nada()};
 var version_ = "webterminal v0.2.0";
-var welcomemsg = "Welcome to my website, you may enter the graphical user interface by typing the command 'enter' and if you wish to use the terminal type 'help' for more commands."
+var welcomemsg = "Welcome to my website, to use the terminal type 'help' then press 'enter' for more commands."
 var info_v = "</br></br>My name is Faraz Oman, and I am a student at McGill University, Majoring in Software Engineering and Minoring in Mathematics. I am currently entering my second year and I am a part of a variety of extracurriculars. I am the editor-in-cheif of the <a target='_blank' href='http://www.plumbersfaucet.ca'>Plumber's Faucet</a>, the Co-Editor of the Academic Journal <a target='_blank' href='http://issuu.com/clashsamcgill'>'Voces'</a> and Vice President of Information Technology of <a target='_blank' href='http://www.actuarialmcgill.ca'>McGill Students' Actuarial Association</a>.</br></br>I enjoy to spend my time listening to music, learning spanish and biking.</br></br>I can be reached at <a target='_blank' href='mailto:faraz@farazoman.me'>faraz@farazoman.me</a> if you wish to get in contact with me. Enjoy the rest of the site.</br>";
 var errmsg = "</br></br><span id='err'>Sorry</span> that is not valid command, refer to the valid commads below.";
 var proj_info = "</br></br>Hi there, thanks for the interest, my projects can be found at my <a target='_blank' href='http://www.github.com/farazoman'>github</a> On github you can view projects that I have worked on from highschool including a few things I have worked on including this terminal style interface.</br>"
