@@ -1,33 +1,37 @@
+//Faraz Oman
+//Commands to be executed by the terminal itself. This does all the processing needed
 
-var termCmd = function(name){
-  this.name = name;
-
-};
-
-termCmd.prototype.execute = function() {
-   
-}
- 
+//to make an object be the child of another
 var inheritsFrom = function (child, parent) {
     child.prototype = Object.create(parent.prototype);
 };
 
-var htmlLoaded = function (txt) {
+//basic command template
+var termCmd = function(){};
+
+//function template
+termCmd.prototype.execute = function() {}
+
+ 
+//
+var textCmd = function (txt) {
     this.txt = txt;
 };
 
+//an object to be compose of many commands 
 var compositeCmd = function (name, cmd) {
     this.name = name;
     this.cmdList = [];
     console.log(cmdList.push(cmd));
 };
 
-
-inheritsFrom(htmlLoaded, termCmd);
+//declare and setup object inheritance
+inheritsFrom(textCmd, termCmd);
 inheritsFrom(compositeCmd, termCmd);
 
-htmlLoaded.prototype.execute = function(){
 
+//set up the execute functions for each object here
+textCmd.prototype.execute = function(){
     add_to_div(this.txt);
 }
 
@@ -38,8 +42,6 @@ compositeCmd.prototype.execute = function(){
 
     }
 }
-
-
 
 
 function test(){
@@ -59,7 +61,7 @@ function load(prompt_){
 
     //termdiv.innerHTML = "help";
 
-    //var ttt = new htmlLoaded("Ttt", );
+    //var ttt = new textCmd("Ttt", );
     //ttt.execute();
     var cmds = {};
   
@@ -68,7 +70,7 @@ function load(prompt_){
    
       for (var i=0, max=eles.length; i < max; i++) {
         var tmpName = eles[i].getAttribute("name");
-        var tmpCmd = new htmlLoaded(eles[i].innerHTML);
+        var tmpCmd = new textCmd(eles[i].innerHTML);
         
         cmds[tmpName] = new compositeCmd(tmpName, tmpCmd);
         

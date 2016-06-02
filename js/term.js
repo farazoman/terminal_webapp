@@ -19,19 +19,37 @@ var txt_colour;
 var cmd = "";
 var endline = "</br>";
 var blinkerOn = false;
+var inFocus = false;
 
 function load(prompt_){
 	var termdiv = document.getElementById("term_area");
+    var body = document.getElementsByTagName("body");
 
     termdiv.innerHTML = "";
 	welcome();
 
+    //pending for permanat deletion
     prompt = endline;
     prompt += prompt_;
 
-    termdiv.innerHTML += prompt;
+    termdiv.innerHTML += endline + prompt;
     
     setInterval(function(){blinker()}, 500);
+    termdiv.addEventListener("click", setInFocus, false);
+    body[0].addEventListener("click", setOutOfFocus);
+}
+
+function setInFocus(){
+    inFocus = true;
+}
+
+function setOutOfFocus(evt){
+    if("term_area" == evt.target.id){
+        setInFocus();
+    }
+    else{
+        inFocus = false;
+    }
 }
 
 
@@ -96,47 +114,61 @@ function error(){
 	help();
 }
 
+function turnOffBlinker(){
+    backspace(true)
+    blinkerOn = false;
+}
+
 function blinker(){
 	var ltr = '';
-	if(blinkerOn){
-    	backspace(true)
-    	blinkerOn = false;
+    if(inFocus){
+    	if(blinkerOn){
+            turnOffBlinker();
+        }
+        else{
+        	ltr += '|';
+        	blinkerOn = true;
+        }
+        add_to_div(ltr);
+    }else{
+        turnOffBlinker()    
     }
-    else{
-    	ltr += '|';
-    	blinkerOn = true;
-    }
-    add_to_div(ltr);
 }
 
 //Event listener for keypressed
 document.addEventListener('keypress', function(event) {
-    window.scrollTo(0,document.body.scrollHeight);
+    var termdiv = document.getElementById("term_area");
+
+    //what does this do exactly?
+    //window.scrollTo(0,document.body.scrollHeight);
+
 	//When enter is pressed, process input
-    if(event.keyCode == 13) {
-    	//process cmd here!!!
-    	backspace(true);
-    	try{
-    		cmds[cmd]();
-    	}
-    	catch(err){
-    		error();
-		}
+    if(inFocus){
+        if(event.keyCode == 13) {
+        	//process cmd here!!!
+        	backspace(true);
+        	try{
+        		cmds[cmd]();
+        	}
+        	catch(err){
+        		error();
+    		}
 
-		backspace(true);
-    	cmd="";
-    	add_to_div(prompt); 
-    }
-    else{
-    	var ltr = String.fromCharCode(event.keyCode);
-    	backspace(true);
-    	blinkerOn = false;
-    	add_to_div(ltr)
+    		backspace(true);
+        	cmd="";
+        	add_to_div(prompt); 
+        }
+        else{
+        	var ltr = String.fromCharCode(event.keyCode);
+        	turnOffBlinker();
+        	add_to_div(ltr)
 
-    	cmd += ltr;
-    	
+        	cmd += ltr;
+        	
+        }
+        termdiv.scrollTop = termdiv.scrollHeight;
+        //window.scrollTo(0,document.body.scrollHeight);
     }
-    window.scrollTo(0,document.body.scrollHeight);
 });
 
 window.addEventListener('keydown', function(event) {
