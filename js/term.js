@@ -1,6 +1,6 @@
 var prompt = "";
 var cmds = {};
-cmds["help"] = function(){help()};
+/*cmds["help"] = function(){help()};
 cmds["whoami"] = function(){info()};
 cmds["myprojs"] = function(){projects()};
 //cmds["enter"] = function(){enter()};
@@ -8,7 +8,7 @@ cmds["version"] = function(){version()};
 cmds["resumeplz"] = function(){resume()};
 cmds["clear"] = function(){clear()};
 cmds[""] = function(){nada()};
-
+*/
 var version_ = "webterminal v0.2.0";
 var info_v = "</br></br>My name is Faraz Oman, and I am a student at McGill University, Majoring in Software Engineering and Minoring in Hispanic Studies. I am in my third year and I am a part of a variety of extracurriculars. I was the editor-in-chief of the <a target='_blank' href='http://www.plumbersfaucet.ca'>Plumber's Faucet</a>, and was and currently am the editor-in-chief of the Academic Journal <a target='_blank' href='http://issuu.com/clashsamcgill'>'Voces'</a> and was the Vice President of Information Technology of <a target='_blank' href='http://www.actuarialmcgill.ca'>McGill Students' Actuarial Association</a>.</br></br>I enjoy to spend my time listening to music, learning spanish and writing calligraphy.</br></br>I can be reached at <a target='_blank' href='mailto:faraz@farazoman.com'>faraz@farazoman.com</a>. Enjoy the rest of the site.</br>";
 var welcomemsg = "Welcome to my website, to use the terminal type 'help' then press 'enter' for more commands."
@@ -24,16 +24,30 @@ var inFocus = false;
 function load(prompt_){
 	var termdiv = document.getElementById("term_area");
     var body = document.getElementsByTagName("body");
+    var eles = document.getElementsByTagName('cmd');
 
+  
+    
+    
+console.log('tewrtert');
+    //load all the commands from the html
+    for (var i=0, max=eles.length; i < max; i++) {
+        console.log('tewrtert');
+        var tmpName = eles[i].getAttribute("name");
+        var tmpCmd = new HTMLCmd(eles[i].innerHTML);
+        //TODO make the name safe i.e check if empty
+
+        cmds[tmpName] = new compositeCmd(tmpName, tmpCmd);
+
+    }
+    
     termdiv.innerHTML = "";
-	welcome();
+    welcome();
 
-    //pending for permanat deletion
     prompt = endline;
     prompt += prompt_;
-
     termdiv.innerHTML += endline + prompt;
-    
+
     setInterval(function(){blinker()}, 500);
     termdiv.addEventListener("click", setInFocus, false);
     body[0].addEventListener("click", setOutOfFocus);
@@ -133,6 +147,7 @@ function blinker(){
     }else{
         turnOffBlinker()    
     }
+
 }
 
 //Event listener for keypressed
@@ -147,8 +162,9 @@ document.addEventListener('keypress', function(event) {
         if(event.keyCode == 13) {
         	//process cmd here!!!
         	backspace(true);
+            console.log(cmd);
         	try{
-        		cmds[cmd]();
+        		cmds[cmd].execute();
         	}
         	catch(err){
         		error();

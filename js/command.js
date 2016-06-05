@@ -14,7 +14,7 @@ termCmd.prototype.execute = function() {}
 
  
 //
-var textCmd = function (txt) {
+var HTMLCmd = function (txt) {
     this.txt = txt;
 };
 
@@ -22,16 +22,16 @@ var textCmd = function (txt) {
 var compositeCmd = function (name, cmd) {
     this.name = name;
     this.cmdList = [];
-    console.log(cmdList.push(cmd));
+    this.cmdList.push(cmd);
 };
 
 //declare and setup object inheritance
-inheritsFrom(textCmd, termCmd);
+inheritsFrom(HTMLCmd, termCmd);
 inheritsFrom(compositeCmd, termCmd);
 
 
 //set up the execute functions for each object here
-textCmd.prototype.execute = function(){
+HTMLCmd.prototype.execute = function(){
     add_to_div(this.txt);
 }
 
@@ -43,7 +43,7 @@ compositeCmd.prototype.execute = function(){
     }
 }
 
-
+/*
 function test(){
 
   add_to_div(termCmd.execute());
@@ -61,7 +61,7 @@ function load(prompt_){
 
     //termdiv.innerHTML = "help";
 
-    //var ttt = new textCmd("Ttt", );
+    //var ttt = new HTMLCmd("Ttt", );
     //ttt.execute();
     var cmds = {};
   
@@ -70,7 +70,7 @@ function load(prompt_){
    
       for (var i=0, max=eles.length; i < max; i++) {
         var tmpName = eles[i].getAttribute("name");
-        var tmpCmd = new textCmd(eles[i].innerHTML);
+        var tmpCmd = new HTMLCmd(eles[i].innerHTML);
         
         cmds[tmpName] = new compositeCmd(tmpName, tmpCmd);
         
@@ -81,3 +81,4 @@ function load(prompt_){
       //  tmpCmd.execute(); 
       
 }
+*/
