@@ -1,0 +1,1 @@
+sh .\compressjs.sh *.js compiled/term.min.js

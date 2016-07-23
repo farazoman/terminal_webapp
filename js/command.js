@@ -18,8 +18,16 @@ var HTMLCmd = function (txt) {
     this.txt = txt;
 };
 
+var RemoveCmd = function (tag) {
+    this.tag = tag;
+};
+
+var BuiltInCmd = function (fnc) {
+    this.command = fnc;
+};
+
 //an object to be compose of many commands 
-var compositeCmd = function (name, cmd) {
+var CompositeCmd = function (name, cmd) {
     this.name = name;
     this.cmdList = [];
     this.cmdList.push(cmd);
@@ -27,15 +35,27 @@ var compositeCmd = function (name, cmd) {
 
 //declare and setup object inheritance
 inheritsFrom(HTMLCmd, termCmd);
-inheritsFrom(compositeCmd, termCmd);
+inheritsFrom(RemoveCmd, termCmd);
+inheritsFrom(BuiltInCmd, termCmd);
+inheritsFrom(CompositeCmd, termCmd);
 
 
 //set up the execute functions for each object here
 HTMLCmd.prototype.execute = function(){
-    add_to_div(this.txt);
+    add_to_div("<br>" + this.txt);
 }
 
-compositeCmd.prototype.execute = function(){
+BuiltInCmd.prototype.execute = function(){
+    this.command();
+}
+
+RemoveCmd.prototype.execute = function(){
+    var cmd_ele = $("cmd[remove-cmd='" + this.tag + "']")
+    console.log(cmd_ele);
+    cmd_ele.remove()
+}
+
+CompositeCmd.prototype.execute = function(){
 
     for(i = 0, max = this.cmdList.length; i < max; i++){
         this.cmdList[i].execute();

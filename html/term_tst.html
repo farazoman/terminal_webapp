@@ -14,19 +14,21 @@
 	</head>
 
 	<body onload="load('faraz@oman: ')" >
-		<div class="terminal" id="term_area" style="width: 70%; height: 50%; overflow-y: scroll;" >
-			<cmd name="test">
+		<div class="terminal" id="term_area" welcome="Welcome to my webpage :)" style="width: 70%; height: 50%; overflow-y: scroll;" >
+			<cmd name="test" remove-cmd="stopMusic">
 
 				hello
-				
+
 				<img src="../res/testing.jpg">
-
-				<audio autoplay>
-					<source src="../res/ts.ogg" type="audio/ogg">
-					<source src="../res/ts.mp3" type="audio/mpeg">
-					Your browser does not support the audio element.
-				</audio>
-
+				<script type="text/javascript"></script>
+				<cmd name="music">	
+					<audio autoplay>
+						<source src="../res/ts.mp3" type="audio/mpeg">
+						<source src="../res/ts.ogg" type="audio/ogg">
+						
+						Your browser does not support the audio element.
+					</audio>
+				</cmd>
 			</cmd>
 		</div>
 	</body>
