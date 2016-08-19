@@ -124,7 +124,7 @@ var clear = function clear(){
 var ayuda = function help(){
 	var ayuda = "</br></br><u>The available commands are:</u>";
 
-	for(i in cmds){
+	for(var i in cmds){
 		ayuda += endline;
 		ayuda += i;
 	}
@@ -192,6 +192,7 @@ document.addEventListener('keypress', function(event) {
                 }
         	}
         	catch(err){
+                console.log(err.message);
         		error();
     		}
 

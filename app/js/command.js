@@ -57,7 +57,7 @@ RemoveCmd.prototype.execute = function(){
 
 CompositeCmd.prototype.execute = function(){
 
-    for(i = 0, max = this.cmdList.length; i < max; i++){
+    for(var i = 0, max = this.cmdList.length; i < max; i++){
         this.cmdList[i].execute();
 
     }

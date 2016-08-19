@@ -1,10 +1,13 @@
 terminal_webapp
 ===============
 
-Javascript for a makeshift terminal which is added to specified div in an html file.
+Webapp of a makeshift terminal which is used by adding a tag to a div in HTML, all commands are made through the html with <cmd> tag.
 
-Use of this is to easily include a custom terminal style interface to any website using a div and the javascript file provided. Whereas styling is easily done in css.
+Minimal setup is required, only customization via HTML, load method in html and an id to the div with the terminal.
+Also you must include the term.min.js file into your html from the dist directory.
 
-Minimal setup will be required, only customization, load method in html and id to div with the terminal.
+To set up for development, npm is required just install npm then run: npm install
+Then to deploy it on your browser run gulp, which is installed with npm. run: gulp
+It will automatically refresh and update the test index.html file. 
 
-Instructions for use will be included with the first usable version which is at least half way there.
+
