@@ -3,16 +3,16 @@ var cmds = {};
 cmds["help"] = function(){help()};
 cmds["whoami"] = function(){info()};
 cmds["myprojs"] = function(){projects()};
-//cmds["enter"] = function(){enter()};
+cmds["linkedIn"] = function(){enter()};
 cmds["version"] = function(){version()};
 cmds["resumeplz"] = function(){resume()};
 cmds["clear"] = function(){clear()};
 cmds[""] = function(){nada()};
 
 var version_ = "webterminal v0.2.0";
-var info_v = "</br></br>My name is Faraz Oman, and I am a student at McGill University, Majoring in Software Engineering and Minoring in Hispanic Studies. I am in my third year and I am a part of a variety of extracurriculars. I was the editor-in-chief of the <a target='_blank' href='http://www.plumbersfaucet.ca'>Plumber's Faucet</a>, and was and currently am the editor-in-chief of the Academic Journal <a target='_blank' href='http://issuu.com/clashsamcgill'>'Voces'</a> and was the Vice President of Information Technology of <a target='_blank' href='http://www.actuarialmcgill.ca'>McGill Students' Actuarial Association</a>.</br></br>I enjoy to spend my time listening to music, learning spanish and writing calligraphy.</br></br>I can be reached at <a target='_blank' href='mailto:faraz@farazoman.com'>faraz@farazoman.com</a>. Enjoy the rest of the site.</br>";
+var info_v = "</br></br>My name is Faraz Oman, and I am a student at McGill University, Majoring in Software Engineering and Minoring in Hispanic Studies. I am in my final semester and I am a part of a variety of extracurriculars. I was the editor-in-chief of the <a target='_blank' href='http://faucet.mcgilleus.ca/repositoree'>Plumber's Faucet</a>, and was the editor-in-chief of the Academic Journal <a target='_blank' enter='http://issuu.com/clashsamcgill'>'Voces'</a> and was the Vice President of Information Technology of McGill Students' Actuarial Association.</br></br>I enjoy to spend my time listening to music, reading books and writing calligraphy.</br></br>I check out my <a target='_blank' href='https://www.linkedin.com/in/farazoman/'>LinkedIn</a> and I can be reached at <a target='_blank' href='mailto:faraz@farazoman.com'>faraz@farazoman.com</a>. Enjoy the rest of the site.</br>";
 var welcomemsg = "Welcome to my website, to use the terminal type 'help' then press 'enter' for more commands."
-var errmsg = "</br></br><span id='err'>Sorry</span> that is not valid command, refer to the valid commads below.";
+var errmsg = "</br></br><span id='err'>Sorry</span>, that is not valid command, refer to the valid commads below.";
 var proj_info = "</br></br>Hi there, thanks for the interest, my projects can be found at my <a target='_blank' href='http://www.github.com/farazoman'>github</a>. You will see the code for projects such as this terminal interface and others such as a video game in java and various hackathon mini projects.</br>"
 var bk_colour;
 var txt_colour;
@@ -85,9 +85,9 @@ function help(){
 }
 
 function enter(){
-    window.location.href = 'http://www.farazoman.me';
+    window.location.href = 'https://www.linkedin.com/in/farazoman/';
     clear();
-    add_to_div("\n\nPlease wait while you are redirected to the GUI");
+    add_to_div("\n\nPlease wait while you are redirected to the my LinkedIn Profile");
     //add_to_div("</br>The graphical user interface has not yet been completed, sorry for the dissapointment, but you can view this cute gif of <a target='_blank' href='../res/mudkip.gif'>mudkip</a> instead");
 }
 
