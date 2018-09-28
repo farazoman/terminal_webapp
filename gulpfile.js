@@ -7,13 +7,20 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
 var appDir = "app/";
+var destDir = "app/dist"
+
+var sources = gulp.src([destDir + "**/*.js"]);
+
+var injectTransform = function (filepath) {
+    return "<script type=\"text/javascript\" src=\"" + filepath + "\"></script>";
+};
 
 gulp.task('babel', function() {
     gulp.src( appDir + 'js/*.js')
         .pipe(babel({
             presets: ['es2015']
         }))
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest(destDir))
 });
 
 gulp.task('watch', ['browserSync'], function () {
@@ -24,7 +31,7 @@ gulp.task('watch', ['browserSync'], function () {
 
 gulp.task('inject', function () {
     return gulp.src(appDir + 'index.html')
-        .pipe(inject(gulp.src(["dist/*.js"])), {relative: false})
+        .pipe(inject(sources, {relative: false, transform: injectTransform}))
         .pipe(gulp.dest(appDir));
 });
 
@@ -35,7 +42,7 @@ gulp.task('browserSync', function() {
       index: "index.html"
     },
   })
-})
+});
 
 gulp.task('compile', function() {
   gulp.src(appDir + 'js/**/*.js')
@@ -44,7 +51,7 @@ gulp.task('compile', function() {
    	}))
     .pipe(uglify())
     .pipe(concat('term.min.js'))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest(destDir))
 });
 
 gulp.task('serve', function () {
@@ -52,3 +59,4 @@ gulp.task('serve', function () {
 });
 
 gulp.task('default', ['compile', 'watch', 'inject']);
+
