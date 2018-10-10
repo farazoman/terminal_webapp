@@ -31,7 +31,7 @@ gulp.task('watch', ['browserSync'], function () {
 
 gulp.task('inject', function () {
     return gulp.src(appDir + 'index.html')
-        .pipe(inject(sources, {relative: false, transform: injectTransform}))
+        .pipe(inject(sources, {relative: true, transform: injectTransform}))
         .pipe(gulp.dest(appDir));
 });
 
@@ -45,7 +45,7 @@ gulp.task('browserSync', function() {
 });
 
 gulp.task('compile', function() {
-  gulp.src(appDir + 'js/**/*.js')
+  gulp.src(appDir +  'js/**/*.js')
   	.pipe(babel({
             presets: ['es2015']
    	}))
